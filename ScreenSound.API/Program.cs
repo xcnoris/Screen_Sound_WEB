@@ -16,13 +16,13 @@ app.MapGet("/Artistas", () =>
 app.MapGet("/Artistas/{nome}", (string nome) =>
 {
     var dal = new DAL<Artista>(new ScreenSoundContext());
-    var artista = dal.RecuperarPor(a=>a.Nome.ToUpper().Equals(nome.ToUpper()));
+    var artista= dal.RecuperarPor(a => a.Nome.ToUpper().Equals(nome.ToUpper()));
     if (artista is null)
     {
         return Results.NotFound();
     }
     return Results.Ok(artista);
-   
 });
+
 
 app.Run();
