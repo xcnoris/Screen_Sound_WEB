@@ -30,7 +30,7 @@ public static class ArtistasExtensions
             {
                 return Results.NotFound();
             }
-            return Results.Ok(artista);
+            return Results.Ok(EntityToResponse(artista));
 
         });
 

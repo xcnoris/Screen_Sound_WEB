@@ -29,7 +29,7 @@ public static class MusicasExtensions
             {
                 return Results.NotFound();
             }
-            return Results.Ok(musica);
+            return Results.Ok(EntityToResponse(musica));
 
         });
 
