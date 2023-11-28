@@ -8,7 +8,7 @@ using ScreenSound.Shared.Modelos.Modelos;
 namespace ScreenSound.API.Endpoints;
 
 public static class MusicasExtensions
-{
+{ 
     public static void AddEndPointsMusicas(this WebApplication app)
     {
         #region Endpoint Músicas
@@ -77,7 +77,7 @@ public static class MusicasExtensions
 
     private static ICollection<Genero> GeneroRequestConverter(ICollection<GeneroRequest> generos)
     {
-        return generos.Select(a => RequestToEntity(a)).ToList();
+      return generos.Select(a => RequestToEntity(a)).ToList();
     }
 
     private static Genero RequestToEntity(GeneroRequest genero)
