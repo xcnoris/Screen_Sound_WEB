@@ -76,4 +76,6 @@ public static class ArtistasExtensions
     {
         return new ArtistaResponse(artista.Id, artista.Nome, artista.Bio, artista.FotoPerfil);
     }
+
+  
 }
