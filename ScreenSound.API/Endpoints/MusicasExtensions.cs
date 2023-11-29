@@ -72,7 +72,6 @@ public static class MusicasExtensions
             return Results.Ok();
         });
         #endregion
-
     }
 
     private static ICollection<Genero> GeneroRequestConverter(ICollection<GeneroRequest> generos, DAL<Genero> dalGenero)
