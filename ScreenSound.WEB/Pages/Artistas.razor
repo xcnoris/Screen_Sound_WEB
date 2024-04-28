@@ -1,7 +1,35 @@
 ﻿@page "/Artistas"
+
+
+@inject ArtistasAPI artistaAPI
+
 <h3>Artistas</h3>
-<h4>@Mensagem</h4>
+@if(artistas is not null)
+{
+    foreach (var artista in artistas)
+    {
+        <p>@artista.Nome</p>
+    }
+}
+else
+{
+    <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+}
+
+
+
+
 
 @code {
-    public string Mensagem { get; set; } = "Olá mundo!";
+    //Criação do objeto Collection que guarda os  nomes dos artistas
+    private ICollection<ArtistaResponse> artistas = null;
+
+    // Faz a consulta a api, e preenche ICollection com os artistas retornados
+    protected override async Task OnInitializedAsync()
+    {
+        artistas = await artistaAPI.GetArtistasAsync();
+    }
+
 }
