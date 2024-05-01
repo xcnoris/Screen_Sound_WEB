@@ -1,15 +1,20 @@
 ﻿@page "/Artistas"
 
-
 @inject ArtistasAPI artistaAPI
 
 <h3>Artistas</h3>
 @if(artistas is not null)
 {
-    foreach (var artista in artistas)
-    {
-        <p>@artista.Nome</p>
-    }
+    <MudGrid>
+        
+        @foreach (var artista in artistas)
+        {
+            // Chamando o componete de card do artista, passando para ele uma object Artista
+            <MudItem xs="3">
+                <CardArtista Artista="artista"/>
+            </MudItem>
+        }
+    </MudGrid>
 }
 else
 {
