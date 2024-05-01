@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using MudBlazor.Services;
 using ScreenSound.WEB;
 using ScreenSound.WEB.Services;
 
@@ -11,8 +12,11 @@ var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
-// Injentando dependencia do ArtistasAPI
+builder.Services.AddMudServices();
+
+// Injentando dependencia do ArtistasAPI e MusicasAPI
 builder.Services.AddTransient<ArtistasAPI>();
+builder.Services.AddTransient<MusicasAPI>();
 
 // objeto httpclient
 builder.Services.AddHttpClient("API", client => {
