@@ -23,12 +23,8 @@
                       RequiredError="Campo obrigatório." />
 
         <div class="d-flex align-center justify-space-between mt-4">
-            <MudButton Variant="Variant.Filled"
-                       @OnClick="Cadastrar"
-                       Color="Color.Primary"
-                       Class="ml-auto">
-                Cadastrar
-            </MudButton>
+            <MudButton Variant="Variant.Filled" @onclick="Voltar" Color="Color.Primary" Class="ml-auto">Voltar</MudButton>
+            <MudButton Variant="Variant.Filled" @onclick="Cadastrar" Color="Color.Primary" Class="ml-auto">Cadastrar</MudButton>
         </div>
 
     </MudForm>
@@ -47,4 +43,8 @@
         navigationManager.NavigateTo("/Artistas");
     }
 
+    private async Task Voltar()
+    {
+        navigationManager.NavigateTo("/Artistas");
+    }
 }
