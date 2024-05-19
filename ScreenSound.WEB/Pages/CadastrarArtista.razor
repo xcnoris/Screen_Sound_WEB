@@ -69,5 +69,11 @@
         var format = "image/jpeg";
         var resizedImage = await file.RequestImageFileAsync(format, 200, 200);
 
+        using var fileStream = resizedImage.OpenReadStream();
+        using var memoryStream = new MemoryStream();
+        await fileStream.CopyToAsync(memoryStream);
+
+        fileImage = $"data:{format};base64,{Convert.ToBase64String(memoryStream.ToArray())}";
+
     }
 }
