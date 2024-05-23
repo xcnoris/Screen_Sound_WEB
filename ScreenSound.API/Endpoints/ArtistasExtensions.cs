@@ -34,8 +34,17 @@ public static class ArtistasExtensions
 
         });
 
-        app.MapPost("/Artistas", ([FromServices] DAL<Artista> dal, [FromBody] ArtistaRequest artistaRequest) =>
+        app.MapPost("/Artistas", ([FromServices] IHostEnvironment env,[FromServices] DAL<Artista> dal, [FromBody] ArtistaRequest artistaRequest) =>
         {
+            // Recupera o nome do artista que esta recebendo na url | Trim para remover os espaços
+            var nome = artistaRequest.nome.Trim();
+            // Nome do arquivo da imagem
+            var imagemArtista = DateTime.Now.ToString("ddMMyyyyhhss") + "." + nome + ".jpeg";
+
+            var path = Path.Combine(env.ContentRootPath,
+                      "wwwroot", "FotoPerfil", imagemArtista);
+
+
             var artista = new Artista(artistaRequest.nome, artistaRequest.bio);
 
             dal.Adicionar(artista);
